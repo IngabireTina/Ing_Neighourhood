@@ -34,3 +34,21 @@ class Hood(models.Model):
     class Meta:
         ordering = ["-pk"]
 
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    profile_picture = models.ImageField(upload_to='images/', default='default.jpg')
+    hood = models.ForeignKey(Hood, on_delete=models.CASCADE, related_name='user_hood',null=True, )
+
+    def __str__(self):
+         return self.user.username
+
+    @receiver(post_save, sender=User)
+    def save_user(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+
+    def delete_user(self):
+        self.delete()
+
+
