@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    <div class="col md-3"></div>
+    {% if business %}
+      <h4 class="text-center" style="color:black">Found {{ business|length }} business titled : <em>{{message}}</em> </h4>
+      <hr>
+      <br>
+      <br>
+      <br>
+    {% else %}
+      <h4 class="text-center"style="color:black"> Found 0 business for search term {{message}} <br> <br>
+</h4>
+      <br>
+      <br>
+
+      <hr>
+    {% endif %}
+    <div class="col md-3"></div>
+
+  </div>
+
+  <div class="row justify-content-center">
+    {% for business in business %}
+    <div class="card col-md-3 m-4" style="background-color: #DED9E8;">
+      <div class="card-body">
+        <h5 class="card-title">{{business.name}}</h5><hr>
+        <p class="card-text text-10"><b>Location:</b> {{business.hood}}</p>
+        <p class="card-text text-10"><b>Email:</b> {{business.business_email}}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <!-- <div class="col md-3"></div> -->
+
+</div>
+
+
+  </div>
+</div>
+{% endblock %}
