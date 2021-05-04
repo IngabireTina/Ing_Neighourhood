@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from app.models import *
 
 # Create your views here.
-
+@login_required(login_url='login')
 def dashboard(request):
     hood = Hood.objects.all()
     context={
@@ -28,7 +28,7 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
-
+@login_required(login_url='login')
 def profile(request, username):
     if request.method == 'POST':
         prof_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
