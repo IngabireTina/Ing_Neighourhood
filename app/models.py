@@ -9,7 +9,7 @@ import datetime as dt
 class Hood(models.Model):
     name = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='hood',default='a.jpg')
+    image = models.ImageField(upload_to='hood',default='default.jpg')
     police = models.IntegerField(null=True,blank=True)
     health = models.IntegerField(null=True,blank=True)
 
