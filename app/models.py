@@ -51,4 +51,25 @@ class Profile(models.Model):
     def delete_user(self):
         self.delete()
 
+class Business(models.Model):
+    name = models.CharField(max_length=200)
+    hood = models.ForeignKey(Hood, on_delete=models.CASCADE, related_name='hood_business',null=True)
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="business")
+    business_email=models.EmailField(max_length=100, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    def create_business(self):
+        self.save()
+
+    def delete_business(self):
+        self.delete()
+
+    @classmethod
+    def search_business(cls, name):
+        return cls.objects.filter(name__icontains=name).all()
+
+
+
 
