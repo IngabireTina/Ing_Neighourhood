@@ -84,3 +84,18 @@ def post(request, id):
     else:
         form = PostForm()
     return render(request, 'post.html', {'form': form})
+
+
+def business(request, id):
+    hood = Hood.objects.get(id=id)
+    if request.method == 'POST':
+        form = BusinessForm(request.POST)
+        if form.is_valid():
+            b_form = form.save(commit=False)
+            b_form.hood = hood
+            b_form.user = request.user.profile
+            b_form.save()
+            return redirect('hood', hood.id)
+    else:
+        form = BusinessForm()
+    return render(request, 'business.html', {'form': form})
