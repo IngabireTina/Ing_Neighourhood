@@ -71,5 +71,25 @@ class Business(models.Model):
         return cls.objects.filter(name__icontains=name).all()
 
 
+class Post(models.Model):
+    title = models.CharField(max_length=200)
+    hood = models.ForeignKey(Hood, on_delete=models.CASCADE, related_name='hood_post',null=True)
+    post = models.TextField()
+    date = models.DateTimeField(auto_now_add=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+    def create_post(self):
+        self.save()
+
+    def delete_post(self):
+        self.delete()
+
+    class Meta:
+        ordering = ["-pk"]
+   
+
+
 
 
