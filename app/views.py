@@ -43,3 +43,29 @@ def profile(request, username):
          }
     return render(request, 'profile.html', context)
 
+
+def join_hood(request, id):
+    hood = get_object_or_404(Hood, id=id)
+    request.user.profile.hood = hood
+    request.user.profile.save()
+    return redirect('dashboard')
+
+def leave_hood(request, id):
+    hood = get_object_or_404(Hood, id=id)
+    request.user.profile.hood = None
+    request.user.profile.save()
+    return redirect('dashboard')
+
+def hood(request, id):
+    hood = Hood.objects.get(id=id)
+    members = Profile.objects.filter(hood=hood)
+    business = Business.objects.filter(hood=hood)
+    posts = Post.objects.filter(hood=hood)
+    
+    context = {
+        'hood': hood,
+        'business': business,
+        'posts': posts,
+        'members':members,
+    }
+    return render(request, 'myhood.html', context)
