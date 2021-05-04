@@ -1,0 +1,3 @@
+#!/home/tina/Desktop/neighbourhood/virtual/bin/python3.6
+
+echo "hey there, this is my first pip package"
