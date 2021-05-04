@@ -99,3 +99,16 @@ def business(request, id):
     else:
         form = BusinessForm()
     return render(request, 'business.html', {'form': form})
+
+
+def search_hood(request):
+    if 'business' in request.GET and request.GET["business"]:
+        search = request.GET.get("business")
+        business= Business.search_business(search)
+        message = f"{search}"
+        context = {"business":business, 'search':search}
+        return render(request, 'result.html',context)
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'result.html',{"message":message})
+
