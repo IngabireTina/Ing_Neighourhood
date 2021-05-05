@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 body {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', 'Times New Roman', Times, serif;
     background: #fafafa;
 }
 .nav-img{
@@ -17,7 +17,7 @@ a:focus {
 
 .navbar {
     padding: 20px 10px;
-    background-color: #723C70;
+    background-color: #7a697a;
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -31,7 +31,7 @@ a:focus {
     min-width: 250px;
     max-width: 250px;
     padding-right:10px;
-    background: #892B64;
+    background: #635d61;
     color: #fff;
     position: -webkit-sticky;
     position: sticky;
@@ -90,7 +90,7 @@ a:focus {
 }
 
 #sidebar ul li a:hover {
-    color: black;
+    color: blue;
     background: #fff;
 }
 
